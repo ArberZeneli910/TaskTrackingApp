@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Tracker - Tasks</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar">
+    <h1>Task Tracker</h1>
+    <a href="projects.html">Back to Projects</a>
+    <a href="index.html" id="logoutLink">Logout</a>
+</nav>
+
+<div class="container">
+    <div class="card">
+        <h2 id="projectTitle">Tasks</h2>
+        <div class="filter-bar">
+            <label for="statusFilter">Filter by status:</label>
+            <select id="statusFilter">
+                <option value="">All</option>
+                <option value="TODO">To Do</option>
+                <option value="IN_PROGRESS">In Progress</option>
+                <option value="COMPLETED">Completed</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 id="formTitle">Create New Task</h2>
+        <form id="taskForm">
+            <input type="hidden" id="taskId">
+            <input type="text" id="taskTitle" placeholder="Title" required minlength="3" maxlength="100">
+            <textarea id="taskDescription" placeholder="Description"></textarea>
+
+            <label for="taskStatus">Status</label>
+            <select id="taskStatus" required>
+                <option value="TODO">To Do</option>
+                <option value="IN_PROGRESS">In Progress</option>
+                <option value="COMPLETED">Completed</option>
+            </select>
+
+            <label for="taskPriority">Priority</label>
+            <select id="taskPriority" required>
+                <option value="LOW">Low</option>
+                <option value="MEDIUM">Medium</option>
+                <option value="HIGH">High</option>
+            </select>
+
+            <label for="taskDueDate">Due Date</label>
+            <input type="date" id="taskDueDate">
+
+            <button type="submit" id="taskSubmitBtn">Create Task</button>
+            <button type="button" id="cancelEditBtn" style="display:none;">Cancel</button>
+        </form>
+        <p id="taskFormMessage"></p>
+    </div>
+
+    <div class="card">
+        <h2>Task List</h2>
+        <div id="tasksList" class="list"></div>
+    </div>
+
+    <div class="card" id="commentsSection" style="display:none;">
+        <h2 id="commentsTitle">Comments</h2>
+        <div id="commentsList" class="list"></div>
+        <form id="commentForm">
+            <textarea id="commentContent" placeholder="Add a comment..." required></textarea>
+            <button type="submit">Add Comment</button>
+        </form>
+    </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/tasks.js"></script>
+</body>
+</html>
